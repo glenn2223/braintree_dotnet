@@ -47,6 +47,9 @@ namespace Braintree.Tests
             "<refund-id>8675309</refund-id>" +
             "<seller-protection-status>12345</seller-protection-status>" +
             "<seller-protection-status-details>eligible</seller-protection-status-details>" +
+            "<selected-financing-currency-code>USD</selected-financing-currency-code>" +
+            "<selected-financing-discount-percentage>15.0</selected-financing-discount-percentage>" +
+            "<selected-financing-term>6</selected-financing-term>" +
             "<settlement-type>instant</settlement-type>" +
             "<shipping-address>" +
                 "<street-address>1 E Main St</street-address>" +
@@ -89,6 +92,9 @@ namespace Braintree.Tests
             Assert.AreEqual("8675309", details.RefundId); 
             Assert.AreEqual("12345", details.SellerProtectionStatus);
             Assert.AreEqual("eligible", details.SellerProtectionStatusDetails);
+            Assert.AreEqual("USD", details.SelectedFinancingCurrencyCode);
+            Assert.AreEqual("15.0", details.SelectedFinancingDiscountPercentage);
+            Assert.AreEqual("6", details.SelectedFinancingTerm);
             Assert.AreEqual(SettlementType.INSTANT, details.SettlementType);
             Assert.AreEqual("1 E Main St", details.ShippingAddress.StreetAddress);
             Assert.AreEqual("submerchant123", details.SubMerchantAccountId);

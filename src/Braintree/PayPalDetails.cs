@@ -30,6 +30,9 @@ namespace Braintree
         public virtual string RefundId { get; protected set; }
         public virtual string SellerProtectionStatus { get; protected set; }
         public virtual string SellerProtectionStatusDetails { get; protected set; }
+        public virtual string SelectedFinancingCurrencyCode { get; protected set; }
+        public virtual string SelectedFinancingDiscountPercentage { get; protected set; }
+        public virtual string SelectedFinancingTerm { get; protected set; }
         public virtual SettlementType? SettlementType { get; protected set; }
         public virtual Address ShippingAddress { get; protected set; }
         public virtual string SubMerchantAccountId { get; protected set; }
@@ -71,6 +74,9 @@ namespace Braintree
             RefundId = node.GetString("refund-id");
             SellerProtectionStatus = node.GetString("seller-protection-status");
             SellerProtectionStatusDetails = node.GetString("seller-protection-status-details");
+            SelectedFinancingCurrencyCode = node.GetString("selected-financing-currency-code");
+            SelectedFinancingDiscountPercentage = node.GetString("selected-financing-discount-percentage");
+            SelectedFinancingTerm = node.GetString("selected-financing-term");
             SettlementType = node.GetEnum<SettlementType>("settlement-type");
             var shippingAddressNode = node.GetNode("shipping-address");
             if (shippingAddressNode != null)

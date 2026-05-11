@@ -6,6 +6,7 @@
 - Add `UsBankAccount` to `TransactionOptionsRequest`
 - Add field `AchType` to `TransactionOptionsUsBankAccountRequest`
 - Add response field `RequestedAchType`, `AchType` to `Transaction`
+- Add missing PayPal transaction response fields in `PayPalDetails`, including `SelectedFinancingCurrencyCode`, `SelectedFinancingDiscountPercentage`, and `SelectedFinancingTerm`
 
 ## 5.38.0
 - Add `MiddleName` to sender and receiver, and `DateOfBirth` to sender in transfer on Transaction
