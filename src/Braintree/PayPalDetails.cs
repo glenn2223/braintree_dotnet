@@ -21,12 +21,18 @@ namespace Braintree
         public virtual string PayerLastName { get; protected set; }
         public virtual string PayerStatus { get; protected set; }
         public virtual string PaymentId { get; protected set; }
+        public virtual string InvoiceId { get; protected set; }
         public virtual string RecipientEmail {get; protected set; }
         public virtual RecipientPhoneDetails RecipientPhone {get; protected set;}
+        public virtual string RefundedTransactionId { get; protected set; }
         public virtual string RefundFromTransactionFeeAmount { get; protected set; }
         public virtual string RefundFromTransactionFeeCurrencyIsoCode { get; protected set; }
         public virtual string RefundId { get; protected set; }
         public virtual string SellerProtectionStatus { get; protected set; }
+        public virtual string SellerProtectionStatusDetails { get; protected set; }
+        public virtual SettlementType SettlementType { get; protected set; }
+        public virtual Address ShippingAddress { get; protected set; }
+        public virtual string SubMerchantAccountId { get; protected set; }
         public virtual string TaxId { get; protected set; }
         public virtual string TaxIdType { get; protected set; }
         public virtual string Token { get; protected set; }
@@ -52,16 +58,26 @@ namespace Braintree
             PayerLastName = node.GetString("payer-last-name");
             PayerStatus = node.GetString("payer-status");
             PaymentId = node.GetString("payment-id"); 
+            InvoiceId = node.GetString("invoice-id");
             RecipientEmail = node.GetString("recipient-email");
             var recipientPhoneNode = node.GetNode("recipient-phone"); 
             if (recipientPhoneNode != null)
             {
                 RecipientPhone = new RecipientPhoneDetails(recipientPhoneNode);
             }
+            RefundedTransactionId = node.GetString("refunded-transaction-id");
             RefundFromTransactionFeeAmount = node.GetString("refund-from-transaction-fee-amount");
             RefundFromTransactionFeeCurrencyIsoCode = node.GetString("refund-from-transaction-fee-currency-iso-code");
             RefundId = node.GetString("refund-id");
             SellerProtectionStatus = node.GetString("seller-protection-status");
+            SellerProtectionStatusDetails = node.GetString("seller-protection-status-details");
+            SettlementType = node.GetEnum<SettlementType>("settlement-type", SettlementType.INSTANT);
+            var shippingAddressNode = node.GetNode("shipping-address");
+            if (shippingAddressNode != null)
+            {
+                ShippingAddress = new Address(shippingAddressNode);
+            }
+            SubMerchantAccountId = node.GetString("sub-merchant-account-id");
             TaxId = node.GetString("tax-id");
             TaxIdType = node.GetString("tax-id-type");
             Token = node.GetString("token");

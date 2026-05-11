@@ -40,10 +40,18 @@ namespace Braintree.Tests
                 "<country-code>1</country-code>" + 
                 "<national-number>4082222222</national-number>" + 
             "</recipient-phone>" +
+            "<invoice-id>invoice123</invoice-id>" +
+            "<refunded-transaction-id>txn123</refunded-transaction-id>" +
             "<refund-from-transaction-fee-amount>2.00</refund-from-transaction-fee-amount>" +
             "<refund-from-transaction-fee-currency-iso-code>123</refund-from-transaction-fee-currency-iso-code>" +
             "<refund-id>8675309</refund-id>" +
             "<seller-protection-status>12345</seller-protection-status>" +
+            "<seller-protection-status-details>eligible</seller-protection-status-details>" +
+            "<settlement-type>instant</settlement-type>" +
+            "<shipping-address>" +
+                "<street-address>1 E Main St</street-address>" +
+            "</shipping-address>" +
+            "<sub-merchant-account-id>submerchant123</sub-merchant-account-id>" +
             "<tax-id>taxid</tax-id>" +
             "<tax-id-type>taxidtype</tax-id-type>" +
             "<token>token</token>" +
@@ -74,10 +82,16 @@ namespace Braintree.Tests
             Assert.AreEqual("test@paypal.com", details.RecipientEmail); 
             Assert.AreEqual("1", details.RecipientPhone.CountryCode); 
             Assert.AreEqual("4082222222", details.RecipientPhone.NationalNumber);
+            Assert.AreEqual("invoice123", details.InvoiceId);
+            Assert.AreEqual("txn123", details.RefundedTransactionId);
             Assert.AreEqual("2.00", details.RefundFromTransactionFeeAmount);
             Assert.AreEqual("123", details.RefundFromTransactionFeeCurrencyIsoCode);
             Assert.AreEqual("8675309", details.RefundId); 
             Assert.AreEqual("12345", details.SellerProtectionStatus);
+            Assert.AreEqual("eligible", details.SellerProtectionStatusDetails);
+            Assert.AreEqual(SettlementType.INSTANT, details.SettlementType);
+            Assert.AreEqual("1 E Main St", details.ShippingAddress.StreetAddress);
+            Assert.AreEqual("submerchant123", details.SubMerchantAccountId);
             Assert.AreEqual("taxid", details.TaxId);
             Assert.AreEqual("taxidtype", details.TaxIdType);
             Assert.AreEqual("token", details.Token);
